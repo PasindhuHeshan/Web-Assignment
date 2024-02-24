@@ -1,3 +1,12 @@
+<?php
+require ("db/database.php");
+
+$sql = "SELECT email, first_name, last_name FROM users";
+$result = $conn->query($sql);
+
+$email = "XXXXXXXXXXXX";
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,7 +55,19 @@
       <hr>
     </div>
 
-
+    <p>
+      <?php
+      echo $email. "<br>";
+      echo $user_name. "<br>";
+      if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+          echo "e-mail: " . $row["email"]. " - Name: " . $row["first_name"]. " " . $row["last_name"]. "<br>";
+        }
+      } else {
+        echo "0 results";
+      }
+      ?>
+    </p>
 
 
     <!-- Bootstrap Bundle with Popper -->
