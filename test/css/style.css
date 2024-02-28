@@ -1,7 +1,8 @@
 c:\xampp\htdocs\new\test.css
 
-:root{
-    
+.form-group{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
 }
 
 
@@ -29,6 +30,22 @@ body {
     background-color:var(--color-primary); 
     padding: 5px;
 }
+
+.main-header .navbar{
+    margin-bottom:0;
+    border:none;
+    min-height:50px;
+    border-radius:0;
+    float: right;    
+}
+
+.main-header .navbar:hover{
+    background-color:rgba(red, green, rgb(196, 196, 209), alpha);
+    box-shadow:0px 0px 3px dimgray;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+}
+
 
 .active{
     border-radius: var(--border-radius);
@@ -84,8 +101,9 @@ body {
 
 .box-primary{
     border-top-color:#3c8dbc;
-    font-size: small;
+    font-size: 12px;
     padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .box-header {

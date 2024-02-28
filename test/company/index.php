@@ -139,13 +139,12 @@ require_once("../db/db.php");
     // Add event listener to the button
     showDescriptionBtn.addEventListener('click', function() {
         // Toggle the display property of the description
-        if (description.style.display === 'none') {
+        if (description.style.display === 'none' || description.style.display === '') {
             description.style.display = 'block';
         } else {
             description.style.display = 'none';
         }
     });
-
 </script>
 
 

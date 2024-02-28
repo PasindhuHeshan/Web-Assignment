@@ -29,6 +29,10 @@ require_once("../db/db.php");
   <!-- js -->
   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
 <body>
 
@@ -136,8 +140,7 @@ require_once("../db/db.php");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../js/adminlte.min.js"></script>
+
 <script>
     // Get the button element
     var showDescriptionBtn = document.getElementById('showDescriptionBtn');
