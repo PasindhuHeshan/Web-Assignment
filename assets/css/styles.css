@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+body .page .card:hover {
+  transform: translateY(-2px);
+  transition: 0.3s;
+}/*# sourceMappingURL=styles.css.map */
