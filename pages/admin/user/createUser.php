@@ -7,19 +7,15 @@ if (isset($_POST['firstname'])) {
   $lastname = $_POST["lastname"];
   $email = $_POST["email"];
   $contactno = $_POST["contactno"];
-  $country = $_POST["country"];
   $state = $_POST["state"];
   $city = $_POST["city"];
-  $sql = "INSERT INTO `users`( `firstname`, `lastname`, `email`, `contactno`, `country`, `state`, `city`) VALUES ('$firstname' , '$lastname' , '$email' , '$contactno' , '$country' , '$state' , '$city')";
+  $sql = "INSERT INTO `users`( `firstname`, `lastname`, `email`, `contactno`, `state`, `city`) VALUES ('$firstname' , '$lastname' , '$email' , '$contactno' , '$state' , '$city')";
   if ($conn->query($sql) === TRUE) {
     echo "Record added successfully";
   } else {
     echo "Error adding record: " . $mysqli->error;
   }
 }
-
-$sql2 = "SELECT name FROM countries";
-$result2 = $conn->query($sql2);
 
 ?>
 
@@ -45,9 +41,6 @@ $result2 = $conn->query($sql2);
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">About us</a>
-            </li>
             <li class="nav-item">
                 <a class="btn btn-light border border-danger rounded-pill text-danger" href="#">Log Out</a>
             </li>
@@ -85,23 +78,6 @@ $result2 = $conn->query($sql2);
         <div class="col-md-4">
             <label class="form-label">Contact Number</label>
             <input type="text" name="contactno" class="form-control" required>
-        </div>
-        <div class="col-md-3">
-            <label class="form-label">Country</label>
-            <select class="form-select" name="country" required>
-            <option selected disabled value="">Choose...</option>
-                <?php
-                    if ($result2->num_rows > 0) {
-                    while($row2 = $result2->fetch_assoc()) {
-                        echo    "<option>".$row2["name"]."</option>";
-                    }
-                    } else {
-                    }
-                ?>
-            </select>
-            <div class="invalid-feedback">
-            Please select a valid country.
-            </div>
         </div>
         <div class="col-md-4">
             <label class="form-label">State</label>

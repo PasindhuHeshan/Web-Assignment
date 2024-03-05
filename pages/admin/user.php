@@ -41,9 +41,6 @@ $result = $conn->query($sql);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">About us</a>
-            </li>
-            <li class="nav-item">
                 <a class="btn btn-light border border-danger rounded-pill text-danger" href="#">Log Out</a>
             </li>
           </ul>
@@ -77,7 +74,6 @@ $result = $conn->query($sql);
                   <th scope="col">last Name</th>
                   <th scope="col">e-Mail</th>
                   <th scope="col">Contact Number</th>
-                  <th scope="col">Country</th>
                   <th scope="col">State</th>
                   <th scope="col">City</th>
                   <th scope="col">Edit</th>
@@ -96,7 +92,6 @@ $result = $conn->query($sql);
                         <td>".$row["lastname"]."</td>
                         <td>".$row["email"]."</td>
                         <td>".$row["contactno"]."</td>
-                        <td>".$row["country"]."</td>
                         <td>".$row["state"]."</td>
                         <td>".$row["city"]."</td>
                         <td>".

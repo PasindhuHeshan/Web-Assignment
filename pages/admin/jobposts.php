@@ -40,9 +40,6 @@ $result = $conn->query($sql);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">About us</a>
-            </li>
-            <li class="nav-item">
                 <a class="btn btn-light border border-danger rounded-pill text-danger" href="#">Log Out</a>
             </li>
           </ul>
@@ -91,7 +88,7 @@ $result = $conn->query($sql);
                         <td>".$row["companyname"]."</td>
                         <td>".$row["createdat"]."</td>
                         <td>".
-                          "<a href='./company/updateCompany.php?id=".$row['id_jobpost']."' class='btn btn-light'>View</a>"
+                          "<a href='jobpost/viewpost.php?id=".$row['id_jobpost']."' class='btn btn-light'>View</a>"
                         ."</td>
                         <td>".
                           "<a href='?delete_id=".$row['id_jobpost']."' class='btn btn-danger' onclick='return confirmDelete();'>Delete</a>".

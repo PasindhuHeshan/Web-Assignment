@@ -3,7 +3,7 @@ require ("../../db/database.php");
 
 $sql_jobs = "SELECT COUNT(*) AS total_records FROM job_post";
 $sql_comp = "SELECT COUNT(*) AS total_records FROM company";
-$sql_app = "SELECT COUNT(*) AS total_records FROM `application`";
+$sql_app = "SELECT COUNT(*) AS total_records FROM `apply_job_post`";
 $sql_user = "SELECT COUNT(*) AS total_records FROM users";
 $result1 = $conn->query($sql_jobs);
 $result2 = $conn->query($sql_comp);
@@ -38,9 +38,6 @@ $user_count =  $result4->fetch_assoc()['total_records'];
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-                        <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">About us</a>
-                        </li>
                         <li class="nav-item">
                         <a class="btn btn-light border border-danger rounded-pill text-danger" href="#">Log Out</a>
                         </li>

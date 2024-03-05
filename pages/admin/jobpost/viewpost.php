@@ -1,27 +1,11 @@
 <?php
 require ("../../../db/database.php");
 
-// Handle update operation if ID is provided
-if (isset($_POST['firstname'])) {
-  $update_id = $_GET['id'];
-  $firstname = $_POST["firstname"];
-  $lastname = $_POST["lastname"];
-  $email = $_POST["email"];
-  $contactno = $_POST["contactno"];
-  $state = $_POST["state"];
-  $city = $_POST["city"];
-  $sql = "UPDATE `users` SET `firstname`='$firstname',`lastname`='$lastname',`email`='$email',`contactno`='$contactno',`state`='$state',`city`='$city' WHERE id_user = '$update_id'";
-  if ($conn->query($sql) === TRUE) {
-    echo "Record updated successfully";
-  } else {
-    echo "Error updating record: " . $mysqli->error;
-  }
-}
 
-$sql1 = "SELECT * FROM users WHERE id_user=".$_GET['id'];
+$sql = "SELECT * FROM job_post WHERE id_jobpost=".$_GET['id'];
 
-$result1 = $conn->query($sql1);
-$user_record = $result1->fetch_assoc();
+$result1 = $conn->query($sql);
+$job_record = $result1->fetch_assoc();
 
 ?>
 
@@ -58,7 +42,7 @@ $user_record = $result1->fetch_assoc();
     <div class="page my-3" id="welcome">
       <div class="row">
         <div class="col-md-6 d-flex align-items-center">
-          <h1 class="text-center p-3 ps-5 fs-1">Edit User</h1>
+          <h1 class="text-center p-3 ps-5 fs-1">Job Post : <?php echo $job_record['jobtitle'] ?></h1>
         </div>
         <div class="col-md-6 fs-3 p-3 d-flex align-items-center justify-content-end">
         </div>
@@ -70,33 +54,46 @@ $user_record = $result1->fetch_assoc();
       <!-- Form goes here -->
       <form class="row g-3 needs-validation" method="POST" action= "" >
         <div class="col-md-4 d-none">
-            <label class="form-label">ID</label>
-            <input type="text" name="id" class="form-control" value="<?php echo $_GET['id'] ?>" required>
+            <label class="form-label fw-bold">Job Title</label>
+            <input type="text" name="id" class="form-control" value="<?php echo $job_record['jobtitle'] ?>" required disabled>
         </div>
         <div class="col-md-4">
-            <label class="form-label">First name</label>
-            <input type="text" name="firstname" class="form-control" value="<?php echo $user_record['firstname'] ?>" required>
+            <label class="form-label fw-bold">Job Description</label>
+            <div type="text" name="id" class="form-control hidden" style="height:300px;overflow-y:scroll">
+                <?php echo $job_record['description'] ?>
+            </div>
         </div>
         <div class="col-md-4">
-            <label class="form-label">Last name</label>
-            <input type="text" name="lastname" class="form-control" value="<?php echo $user_record['lastname'] ?>" required>
+            <label class="form-label fw-bold">Minimum Salary</label>
+            <div type="text" name="id" class="form-control hidden">
+                <?php echo $job_record['minimumsalary'] ?>
+            </div>
         </div>
         <div class="col-md-4">
-            <label class="form-label">e-Mail</label>
-            <input type="text" name="email" class="form-control" value="<?php echo $user_record['email'] ?>" required>
+            <label class="form-label fw-bold">Maximum Salary</label>
+            <div type="text" name="id" class="form-control hidden">
+                <?php echo $job_record['maximumsalary'] ?>
+            </div>
         </div>
         <div class="col-md-4">
-            <label class="form-label">Contact Number</label>
-            <input type="text" name="contactno" class="form-control" value="<?php echo $user_record['contactno'] ?>" required>
+            <label class="form-label fw-bold">Work Experience</label>
+            <div type="text" name="id" class="form-control hidden">
+                <?php echo $job_record['experience'] ?>
+            </div>
         </div>
         <div class="col-md-4">
-            <label class="form-label">State</label>
-            <input type="text" name="state" class="form-control" value="<?php echo $user_record['state'] ?>" required>
+            <label class="form-label fw-bold">Required Qualification</label>
+            <div type="text" name="id" class="form-control hidden">
+                <?php echo $job_record['qualification'] ?>
+            </div>
         </div>
         <div class="col-md-4">
-            <label class="form-label">City</label>
-            <input type="text" name="city" class="form-control" value="<?php echo $user_record['city'] ?>" required>
+            <label class="form-label fw-bold">Published on</label>
+            <div type="text" name="id" class="form-control hidden">
+                <?php echo $job_record['createdat'] ?>
+            </div>
         </div>
+
         <div class="col-12">
             <a href="../user.php" class="btn btn-secondary" type="submit">Go Back</a>
             <button class="btn btn-primary" type="submit">Save Changes</button>
