@@ -1,5 +1,19 @@
 <?php
+session_start();
 require ("../../db/database.php");
+
+if(empty($_SESSION['access_level']) || $_SESSION['access_level'] != 'ADMIN'){
+    header("location: /web-assignment/careerplus/chomepage");
+    echo "Unauthorized Page";
+    exit();
+}
+
+if(isset($_GET["logout"])){
+    $_SESSION['access_level'] = null;
+    $_SESSION['username'] = null;
+
+    header("location: /web-assignment/careerplus/chomepage");
+}
 
 // Handle delete operation if ID is provided
 if (isset($_GET['delete_id'])) {
@@ -45,7 +59,7 @@ $result = $conn->query($sql);
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
 
             <li class="nav-item">
-                <a class="btn btn-light border border-danger rounded-pill text-danger" href="#">Log Out</a>
+                <a class="btn btn-light border border-danger rounded-pill text-danger" href="?logout=TRUE">Log Out</a>
             </li>
           </ul>
         </div>

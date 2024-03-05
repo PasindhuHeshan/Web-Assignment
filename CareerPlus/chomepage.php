@@ -50,6 +50,7 @@ require_once("db.php");
                 <div class="dropdown-content">
                   <a href="#"> Candidate Login</a>
                   <a href="#"> Company Login</a>
+                  <a href="../pages/auth/login"> Admin Login</a>
                 </div>
               </div>
             </li>

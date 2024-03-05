@@ -1,5 +1,19 @@
 <?php
+session_start();
 require ("../../db/database.php");
+
+if(empty($_SESSION['access_level']) || $_SESSION['access_level'] != 'ADMIN'){
+    header("location: /web-assignment/careerplus/chomepage");
+    echo "Unauthorized Page";
+    exit();
+}
+
+if(isset($_GET["logout"])){
+    $_SESSION['access_level'] = null;
+    $_SESSION['username'] = null;
+
+    header("location: /web-assignment/careerplus/chomepage");
+}
 
 $sql_jobs = "SELECT COUNT(*) AS total_records FROM job_post";
 $sql_comp = "SELECT COUNT(*) AS total_records FROM company";
@@ -14,6 +28,8 @@ $job_count = $result1->fetch_assoc()['total_records'];
 $comp_count =  $result2->fetch_assoc()['total_records'];
 $app_count =  $result3->fetch_assoc()['total_records'];
 $user_count =  $result4->fetch_assoc()['total_records'];
+
+// echo $_SESSION['access_level'];
 
 ?>
 
@@ -39,7 +55,7 @@ $user_count =  $result4->fetch_assoc()['total_records'];
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
                         <li class="nav-item">
-                        <a class="btn btn-light border border-danger rounded-pill text-danger" href="#">Log Out</a>
+                        <a class="btn btn-light border border-danger rounded-pill text-danger" href="?logout=TRUE">Log Out</a>
                         </li>
                     </ul>
                 </div>
