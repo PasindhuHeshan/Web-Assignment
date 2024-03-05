@@ -1,7 +1,18 @@
 <?php
 require ("../../db/database.php");
 
-$sql = "SELECT * FROM job_post";
+// Handle delete operation if ID is provided
+if (isset($_GET['delete_id'])) {
+  $delete_id = $_GET['delete_id'];
+  $sql = "DELETE FROM job_post WHERE id_jobpost = $delete_id";
+  if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+  } else {
+    echo "Error deleting record: " . $mysqli->error;
+  }
+}
+
+$sql = "SELECT job_post.*, company.companyname FROM job_post INNER JOIN company ON job_post.id_company=company.id_company";
 $result = $conn->query($sql);
 
 ?>
@@ -56,8 +67,51 @@ $result = $conn->query($sql);
       <hr>
     </div>
 
+    <div class="row p-3">
+      <table class="table table-dark table-striped">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Job Title</th>
+                  <th scope="col">Company Name</th>
+                  <th scope="col">Date Created</th>
+                  <th scope="col">View</th>
+                  <th scope="col">Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+          <?php
+            if ($result->num_rows > 0) {
+              $index =0;
+              while($row = $result->fetch_assoc()) {
+                $index += 1;
+                echo "<tr>
+                        <td>".$index."</td>
+                        <td>".$row["jobtitle"]."</td>
+                        <td>".$row["companyname"]."</td>
+                        <td>".$row["createdat"]."</td>
+                        <td>".
+                          "<a href='./company/updateCompany.php?id=".$row['id_jobpost']."' class='btn btn-light'>View</a>"
+                        ."</td>
+                        <td>".
+                          "<a href='?delete_id=".$row['id_jobpost']."' class='btn btn-danger' onclick='return confirmDelete();'>Delete</a>".
+                        "</td>
+                      </tr>";
+              }
+            } else {
+            }
+            ?>
+          </tbody>
+      </table>
+    </div>
+
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      function confirmDelete() {
+        return confirm("Are you sure you want to delete this record?");
+      }
+    </script>
   </body>
 </html>

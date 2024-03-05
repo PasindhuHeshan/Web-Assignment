@@ -3,7 +3,7 @@ require ("../../db/database.php");
 
 $sql_jobs = "SELECT COUNT(*) AS total_records FROM job_post";
 $sql_comp = "SELECT COUNT(*) AS total_records FROM company";
-$sql_app = "SELECT COUNT(*) AS total_records FROM job_post";
+$sql_app = "SELECT COUNT(*) AS total_records FROM `application`";
 $sql_user = "SELECT COUNT(*) AS total_records FROM users";
 $result1 = $conn->query($sql_jobs);
 $result2 = $conn->query($sql_comp);
@@ -86,17 +86,17 @@ $user_count =  $result4->fetch_assoc()['total_records'];
                 </a>
             </div>
             <div class="col p-0">
-                <a class="card btn m-1 p-3 bg-secondary" href="company.php">
+                <a class="card btn m-1 p-3 bg-danger" href="company.php">
                 <p class="fw-bold text-center text-light m-0 fs-1">Companies</p>
                 </a>
             </div>
-            <div class="col p-0">
+            <!-- <div class="col p-0" type="hidden">
                 <a class="card btn m-1 p-3 bg-success" href="application.php">
                 <p class="fw-bold text-center text-light m-0 fs-1">Applications</p>
                 </a>
-            </div>
+            </div> -->
             <div class="col p-0">
-                <a class="card btn m-1 p-3 bg-danger" href="user.php">
+                <a class="card btn m-1 p-3 bg-success" href="user.php">
                 <p class="fw-bold text-center text-light m-0 fs-1">Users</p>
                 </a>
             </div>                

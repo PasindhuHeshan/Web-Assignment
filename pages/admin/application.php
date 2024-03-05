@@ -1,7 +1,22 @@
 <?php
 require ("../../db/database.php");
 
-$sql = "SELECT * FROM company";
+// Handle delete operation if ID is provided
+if (isset($_GET['delete_id'])) {
+  $delete_id = $_GET['delete_id'];
+  $sql = "DELETE FROM `application` WHERE id_apply = $delete_id";
+  if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+  } else {
+    echo "Error deleting record: " . $mysqli->error;
+  }
+}
+
+$sql = "SELECT `application`.*, users.firstname, users.lastname, job_post.jobtitle, company.companyname
+        FROM `application`
+        JOIN users ON users.id_user = application.id_user
+        JOIN company ON company.id_company = application.id_company
+        JOIN job_post ON job_post.id_jobpost = application.id_jobpost";
 $result = $conn->query($sql);
 
 ?>
@@ -54,6 +69,44 @@ $result = $conn->query($sql);
         </div>
       </div>
       <hr>
+    </div>
+
+    <div class="row p-3">
+      <table class="table table-dark table-striped">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Job Title</th>
+                  <th scope="col">Company Name</th>
+                  <th scope="col">Candidate Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+          <?php
+            if ($result->num_rows > 0) {
+              $index =0;
+              while($row = $result->fetch_assoc()) {
+                $index += 1;
+                echo "<tr>
+                        <td>".$index."</td>
+                        <td>".$row["jobtitle"]."</td>
+                        <td>".$row["companyname"]."</td>
+                        <td>".$row["firstname"]."".$row["lastname"]."</td>
+                        <td>".
+                          "<a href='./company/updateCompany.php?id=".$row['id_apply']."' class='btn btn-light'>View</a>"
+                        ."</td>
+                        <td>".
+                          "<a href='?delete_id=".$row['id_apply']."' class='btn btn-danger' onclick='return confirmDelete();'>Delete</a>".
+                        "</td>
+                      </tr>";
+              }
+            } else {
+            }
+            ?>
+          </tbody>
+      </table>
     </div>
 
 
