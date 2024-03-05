@@ -15,14 +15,14 @@ $result = $conn->query($sql);
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="./assets/imgs/logo.webp" type="image/icon type">
-    <title>Job Recruiter</title>
+    <title>Career Plus</title>
   </head>
   <body>
   
   
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid d-flex justify-content-between">
-        <a class="navbar-brand" href="#">CareerPlus</a>
+        <a class="navbar-brand" href="dashboard">CareerPlus</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,7 +48,7 @@ $result = $conn->query($sql);
             <div class="row justify-content-end">
                 <div class="col-md-6 fs-3 p-3 d-flex align-items-center justify-content-end">
                     <a class="btn btn-primary me-4" href="dashboard.php">Back to homepage</a>
-                    <a class="btn btn-success me-4" href="company/createCompany.php">Add New Company</a>
+                    <a class="btn btn-success me-4" href="company/createCompany.php">Add New Job Post</a>
                 </div>
             </div>
         </div>

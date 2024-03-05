@@ -26,7 +26,7 @@ $user_count =  $result4->fetch_assoc()['total_records'];
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="icon" href="./assets/imgs/logo.webp" type="image/icon type">
-        <title>Job Recruiter</title>
+        <title>Career Plus</title>
     </head>
 
     <body>

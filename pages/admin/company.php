@@ -103,7 +103,7 @@ $result = $conn->query($sql);
                           "<a href='./company/updateCompany.php?id=".$row['id_company']."' class='btn btn-light'>Edit</a>"
                         ."</td>
                         <td>".
-                          "<a href='?delete_id=".$row['id_company']."' class='btn btn-danger'>Delete</a>".
+                          "<a href='?delete_id=".$row['id_company']."' class='btn btn-danger' onclick='return confirmDelete();'>Delete</a>".
                         "</td>
                       </tr>";
               }
@@ -117,5 +117,10 @@ $result = $conn->query($sql);
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      function confirmDelete() {
+        return confirm("Are you sure you want to delete this record?");
+      }
+    </script>
   </body>
 </html>

@@ -79,7 +79,7 @@ $result = $conn->query($sql);
                   <th scope="col">Contact Number</th>
                   <th scope="col">Country</th>
                   <th scope="col">State</th>
-                  <th scope="col">Ciy</th>
+                  <th scope="col">City</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
               </tr>
@@ -87,7 +87,7 @@ $result = $conn->query($sql);
           <tbody>
           <?php
             if ($result->num_rows > 0) {
-              $index =0;
+              $index = 0;
               while($row = $result->fetch_assoc()) {
                 $index += 1;
                 echo "<tr>
@@ -100,10 +100,10 @@ $result = $conn->query($sql);
                         <td>".$row["state"]."</td>
                         <td>".$row["city"]."</td>
                         <td>".
-                          "<a href='./user/updateUser.php?id=".$row['id_user']."' class='btn btn-light'>Edit</a>"
+                          "<a href='./user/updateUser.php?id=".$row['id_user']."' id='edit_btn' class='btn btn-light'>Edit</a>"
                         ."</td>
                         <td>".
-                          "<a href='?delete_id=".$row['id_user']."' class='btn btn-danger'>Delete</a>".
+                          "<a href='?delete_id=".$row['id_user']."' id='delete_btn' class='btn btn-danger' onclick='return confirmDelete();'>Delete</a>".
                         "</td>
                       </tr>";
               }
@@ -116,5 +116,10 @@ $result = $conn->query($sql);
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      function confirmDelete() {
+        return confirm("Are you sure you want to delete this record?");
+      }
+    </script>
   </body>
 </html>
