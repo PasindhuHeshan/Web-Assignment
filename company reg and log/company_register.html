@@ -1,0 +1,56 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+
+        <title>Company Register</title>
+
+        <link rel="stylesheet" href="company_register.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <div class="form-box register">
+                <h1>Create Account</h1>
+                <form action="./dbh/com-register.php" method="post" enctype="multipart/form-data">
+                    <div class="input-box">
+                        <input type="text" placeholder=" Full Name" name="fullName" required>
+                        <input type="password" id="password" placeholder="Password" name="Password" required>
+                    </div>
+
+
+                    <div class="input-box"> 
+                        <input type="text" placeholder="Company Name" name="companyName" required>
+                        <input type="password" id="confpassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    </div>
+                  
+                    <div class="input-box">       
+                        <input type="email" placeholder="Email" name="Email" required>
+                        <input type="text" placeholder="Phone Number" name="phoneNumber" required>
+                    </div>
+
+                    <div class="input-box">       
+                        <input type="text" placeholder="WebSite" name="webSite" required>
+                        <input type="text" placeholder="Country" name="country" required>
+                    </div>
+
+                    <div class="intro">
+                        <textarea name="Introduction" rows="5" cols="50" placeholder="Brief Introduction about your company" name="Introduction" required></textarea>
+                        <lable>Add Company Logo Here</lable>
+                        <input type="file" name="logo" required>
+                    </div>
+                    
+                    <div class="confirm">
+                        <p><input type="checkbox" required><b>I hereby declare the above information provided is true and correct</b></p>
+                        </div>
+    
+                        <div>
+                        <button type="submit" class="btn">Register</button></a>
+                        </div>
+                </form>
+            </div>
+        </div>
+        
+    </body>
+</html>

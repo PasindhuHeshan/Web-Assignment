@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+
+        <title>
+            Candidate Log in
+        </title>
+
+        <link rel="stylesheet"  href="c_login.css">
+
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+            <div class="form-box login">
+            <h1>Login</h1>
+            <form action="./dbh/c-login.php" method="post">
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required name="Email">
+                   
+                </div>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required name="Password">
+                  
+                </div>
+
+                <div class="remember-forgot">
+                    <lable><input type="checkbox">Remember me</lable>
+                    <a href="forgot.html">Forgot password?</a>
+                </div>
+                <br>
+                
+                <div >
+                <button type="submit" class="btn" name="login">Login</button>
+                </div>
+               
+                <div class="login-register">
+                    <p>Don't have an account?<br><a href="c_register.html">Register</a></p>
+                </div>
+            </form>
+            </div>
+        </div>
+
+    </body>
+</html>

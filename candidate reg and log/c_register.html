@@ -1,0 +1,87 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+
+        <title>Candidate Register</title>
+
+        <link rel="stylesheet" href="c_register.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+           <div class="form-box register">
+            <h1>Create Account</h1>
+                <form action="./dbh/c-register.php" method="post">
+
+                    <p class="Registered successfully"></p>
+                    <div class="input-box">
+                        <input type="text" placeholder=" First Name" name="firstName" required>
+                        <input type="password" placeholder="Password" name="Password" required>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" placeholder=" Last Name" name="lastName"required>
+                        <input type="password" placeholder="Confirm Password" name="confirmPassword"required>
+                        <p class="password dose not match"></p>
+                    </div>
+                    
+                    <div class="input-box">       
+                        <input type="email" placeholder="Email" name="Email" required>
+                        <input type="text" placeholder="Phone Number" name="phoneNumber" required>
+                    </div>
+
+                   
+                    <div class="dates">
+                    <div class="row">
+                        <lable><p>Date of birth</p></lable>
+                        <input type="date"  name="dBay" required>
+                    </div>
+                    <div class="row">
+                        <lable ><p>Passing Year</p></lable>
+                        <input type="date" name="passYear" required>
+                    </div>
+                    </div>
+                  
+
+                    <div class="input-box">
+                        <input type="text" placeholder="Age" name="Age" required>
+                        <input type="text" placeholder="Highest Qualification" name="Quali" required>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" placeholder="Address" name="address" required>
+                        <input type="text" placeholder="Stream" name="stream" required>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" placeholder="City" name="city" required>
+                        <input type="text" placeholder="State" name="state" required>
+                    </div>
+
+                    <div class="intro-skill">
+                        <textarea name="intoduction" rows="6" cols="58" placeholder="Brief Introduction about you" required></textarea>
+                        <textarea name="skills" rows="6" cols="58"placeholder="Enter skills" name="skills" required></textarea>
+                    </div>
+
+                    
+                    <div class="designation">   
+                        <input type="text" placeholder="Designation" name="designation">
+                    </div>
+                
+
+                    <div class="confirm">
+                    <p><input type="checkbox" required><b>I hereby declare the above information provided is true and correct</b></p>
+                    </div>
+                   
+                    <div>
+                    <button type="submit" class="btn" value="upload" >Register</button>
+                    </div>
+                    
+                </form>
+           </div>
+        </div>
+        
+    </body>
+</html>

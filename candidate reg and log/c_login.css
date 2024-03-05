@@ -1,0 +1,80 @@
+.form-box login {
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:url('login.jpg') ;
+    background-size: cover;
+ 
+}
+.wrapper{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent ;
+    border: 2px solid powderblue;
+    border-radius:20px ;
+    backdrop-filter: blur(40px);
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgb(32, 3, 91);
+}
+
+.wrapper .form-box{
+    padding:40px;
+}
+
+.form-box h1{
+    font-size:2em;
+    color: rgb(241, 240, 245);
+    text-align:center;
+}
+
+.input-box{
+    position: relative;
+    width: 130%;
+    height: 50px; 
+
+}
+
+
+.input-box input{
+    width: 77%;
+    height: 30px;
+}
+
+.remember-forgot {
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot a{
+    color: rgb(82, 176, 190);
+}
+
+.login-register p{
+    text-align: center;
+    color: rgb(240, 146, 137);
+}
+
+.login-register a{
+    color: rgb(90, 214, 233);
+    text-align: center;
+}
+
+.btn{
+    width: 100%;
+    height: 30px;
+   
+    margin: 5px;
+    background-color: rgb(7, 177, 63);
+    color: aliceblue;
+    font-size: 20px;
+}
