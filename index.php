@@ -1,76 +1,386 @@
 <?php
-require ("db/database.php");
 
-$sql = "SELECT email, first_name, last_name FROM users";
-$result = $conn->query($sql);
+//To Handle Session Variables on This Page
+session_start();
 
-$email = "XXXXXXXXXXXX";
+
+//Including Database Connection From db.php file to avoid rewriting in all files
+require_once("db.php");
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Career Plus</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/AdminLTE.min.css">
+  <link rel="stylesheet" href="css/_all-skins.min.css">
+  <!-- Custom -->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-green sidebar-mini">
+<div class="wrapper">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="icon" href="./assets/imgs/logo.webp" type="image/icon type">
-    <title>Job Recruiter</title>
-  </head>
-  <body>
-  
-  
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid d-flex justify-content-between">
-        <a class="navbar-brand" href="#">Job Recruiter online</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">About us</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary rounded-pill" href="#">Sign In</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-dark border border-light rounded-pill" href="#">Sign Up</a>
-            </li>
-          </ul>
-        </div>
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="index.php" class="logo logo-bg">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>J</b>P</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Job</b> Portal</span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="jobs.php">Jobs</a>
+          </li>
+          <li>
+            <a href="#candidates">Candidates</a>
+          </li>
+          <li>
+            <a href="#company">Company</a>
+          </li>
+          <li>
+            <a href="#about">About Us</a>
+          </li>
+          <?php if(empty($_SESSION['id_user']) && empty($_SESSION['id_company'])) { ?>
+          <li>
+            <a href="login.php">Login</a>
+          </li>
+          <li>
+            <a href="sign-up.php">Sign Up</a>
+          </li>  
+          <?php } else { 
+
+            if(isset($_SESSION['id_user'])) { 
+          ?>        
+          <li>
+            <a href="user/index.php">Dashboard</a>
+          </li>
+          <?php
+          } else if(isset($_SESSION['id_company'])) { 
+          ?>        
+          <li>
+            <a href="company/index.php">Dashboard</a>
+          </li>
+          <?php } ?>
+          <li>
+            <a href="logout.php">Logout</a>
+          </li>
+          <?php } ?>
+        </ul>
       </div>
     </nav>
+  </header>
 
-    <div class="page my-3" id="welcome">
-      <div class="row">
-        <div class="col-md-6 d-flex align-items-center">
-          <h1 class="text-center p-3 ps-5 fs-1">Welcome to Job Recruiter online!</h1>
-        </div>
-        <div class="col-md-6 fs-3 p-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quis voluptatibus officiis porro hic iusto quia quos aliquid animi, aliquam qui quas esse est cum adipisci nobis provident. Magni tempore, molestiae quam accusamus voluptatibus non natus reiciendis, veniam esse, saepe numquam ad optio. Illo et earum rerum velit odit tempore.
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="margin-left: 0px;">
+
+    <section class="content-header bg-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center index-head">
+            <h1>All <strong>JOBS</strong> In One Place</h1>
+            <p>One search, global reach</p>
+            <p><a class="btn btn-success btn-lg" href="jobs.php" role="button">Search Jobs</a></p>
+          </div>
         </div>
       </div>
-      <hr>
+    </section>
+
+    <section class="content-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 latest-job margin-bottom-20">
+            <h1 class="text-center">Latest Jobs</h1>            
+            <?php 
+          /* Show any 4 random job post
+           * 
+           * Store sql query result in $result variable and loop through it if we have any rows
+           * returned from database. $result->num_rows will return total number of rows returned from database.
+          */
+          $sql = "SELECT * FROM job_post Order By Rand() Limit 4";
+          $result = $conn->query($sql);
+          if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) 
+            {
+              $sql1 = "SELECT * FROM company WHERE id_company='$row[id_company]'";
+              $result1 = $conn->query($sql1);
+              if($result1->num_rows > 0) {
+                while($row1 = $result1->fetch_assoc()) 
+                {
+             ?>
+            <div class="attachment-block clearfix">
+              <img class="attachment-img" src="img/photo1.png" alt="Attachment Image">
+              <div class="attachment-pushed">
+                <h4 class="attachment-heading"><a href="view-job-post.php?id=<?php echo $row['id_jobpost']; ?>"><?php echo $row['jobtitle']; ?></a> <span class="attachment-heading pull-right">$<?php echo $row['maximumsalary']; ?>/Month</span></h4>
+                <div class="attachment-text">
+                    <div><strong><?php echo $row1['companyname']; ?> | <?php echo $row1['city']; ?> | Experience <?php echo $row['experience']; ?> Years</strong></div>
+                </div>
+              </div>
+            </div>
+          <?php
+              }
+            }
+            }
+          }
+          ?>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="candidates" class="content-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center latest-job margin-bottom-20">
+            <h1>Candidates</h1>
+            <p>Finding a job just got easier. Create a profile and apply with single mouse click.</p>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <div class="thumbnail candidate-img">
+              <img src="img/browse.jpg" alt="Browse Jobs">
+              <div class="caption">
+                <h3 class="text-center">Browse Jobs</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="thumbnail candidate-img">
+              <img src="img/interviewed.jpeg" alt="Apply & Get Interviewed">
+              <div class="caption">
+                <h3 class="text-center">Apply & Get Interviewed</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="thumbnail candidate-img">
+              <img src="img/career.jpg" alt="Start A Career">
+              <div class="caption">
+                <h3 class="text-center">Start A Career</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="company" class="content-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center latest-job margin-bottom-20">
+            <h1>Companies</h1>
+            <p>Hiring? Register your company for free, browse our talented pool, post and track job applications</p>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <div class="thumbnail company-img">
+              <img src="img/postjob.png" alt="Browse Jobs">
+              <div class="caption">
+                <h3 class="text-center">Post A Job</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="thumbnail company-img">
+              <img src="img/manage.jpg" alt="Apply & Get Interviewed">
+              <div class="caption">
+                <h3 class="text-center">Manage & Track</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="thumbnail company-img">
+              <img src="img/hire.png" alt="Start A Career">
+              <div class="caption">
+                <h3 class="text-center">Hire</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="statistics" class="content-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center latest-job margin-bottom-20">
+            <h1>Our Statistics</h1>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+               <?php
+                      $sql = "SELECT * FROM job_post";
+                      $result = $conn->query($sql);
+                      if($result->num_rows > 0) {
+                        $totalno = $result->num_rows;
+                      } else {
+                        $totalno = 0;
+                      }
+                    ?>
+              <h3><?php echo $totalno; ?></h3>
+
+              <p>Job Offers</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-paper"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+               <?php
+                      $sql = "SELECT * FROM company WHERE active='1'";
+                      $result = $conn->query($sql);
+                      if($result->num_rows > 0) {
+                        $totalno = $result->num_rows;
+                      } else {
+                        $totalno = 0;
+                      }
+                    ?>
+              <h3><?php echo $totalno; ?></h3>
+
+              <p>Registered Company</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-briefcase"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <?php
+                      $sql = "SELECT * FROM users WHERE resume!=''";
+                      $result = $conn->query($sql);
+                      if($result->num_rows > 0) {
+                        $totalno = $result->num_rows;
+                      } else {
+                        $totalno = 0;
+                      }
+                    ?>
+              <h3><?php echo $totalno; ?></h3>
+
+              <p>CV'S/Resume</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-list"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+               <?php
+                      $sql = "SELECT * FROM users WHERE active='1'";
+                      $result = $conn->query($sql);
+                      if($result->num_rows > 0) {
+                        $totalno = $result->num_rows;
+                      } else {
+                        $totalno = 0;
+                      }
+                    ?>
+              <h3><?php echo $totalno; ?></h3>
+
+              <p>Daily Users</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-stalker"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      </div>
+    </section>
+
+    <section id="about" class="content-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center latest-job margin-bottom-20">
+            <h1>About US</h1>                      
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <img src="img/browse.jpg" class="img-responsive">
+          </div>
+          <div class="col-md-6 about-text margin-bottom-20">
+            <p>The online Career Plus application allows job seekers and recruiters to connect.The application provides the ability for job seekers to create their accounts, upload their profile and resume, search for jobs, apply for jobs, view different job openings. The application provides the ability for companies to create their accounts, search candidates, create job postings, and view candidates applications.
+            </p>
+            <p>
+              This website is used to provide a platform for potential candidates to get their dream job and excel in yheir career.
+              This site can be used as a paving path for both companies and job-seekers for a better life .
+              
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer" style="margin-left: 0px;">
+    <div class="text-center">
+      <strong>Copyright &copy; 2016-2017 <a href="jonsnow.netai.net">Career Plus</a>.</strong> All rights
+    reserved.
     </div>
+  </footer>
 
-    <p>
-      <?php
-      echo $email. "<br>";
-      echo $user_name. "<br>";
-      if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-          echo "e-mail: " . $row["email"]. " - Name: " . $row["first_name"]. " " . $row["last_name"]. "<br>";
-        }
-      } else {
-        echo "0 results";
-      }
-      ?>
-    </p>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
 
+</div>
+<!-- ./wrapper -->
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+<!-- jQuery 3 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.min.js"></script>
+</body>
 </html>
