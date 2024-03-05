@@ -104,7 +104,7 @@ require_once("db.php");
                   ?>
                     <div class="card">
                       <div class="card-left blue-bg">
-                        <img src="http://localhost/careerplus/img/icon2.jpg" alt="New Job">
+                        <img src="img/icon2.jpg" alt="New Job">
                       </div>
                       <div class="card-center">
                         <h4 class="attachment-heading"><a href="view-job-post.php?id=<?php echo $row['id_jobpost']; ?>">

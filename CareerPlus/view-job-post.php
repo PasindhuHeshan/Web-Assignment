@@ -46,12 +46,12 @@ require_once("db.php");
 			 CareerPlus
 			</div>
 			 <ul class="nav-links">
-				  <li><a href="http://localhost/careerplus/chomepage.php#home">Home</a></li>
-          <li><a href="http://localhost/careerplus/jobs.php">Jobs</a></li>
-          <li><a href="http://localhost/careerplus/chomepage.php#candidates">Candidates</a></li>
-          <li><a href="http://localhost/careerplus/chomepage.php#companies">Company</a></li>
-          <li><a href="http://localhost/careerplus/chomepage.php#about">About Us</a></li>
-				  <li><a href="http://localhost/careerplus/chomepage.php#contact">Contact Us</a></li>
+				  <li><a href="chomepage.php#home">Home</a></li>
+          <li><a href="jobs.php">Jobs</a></li>
+          <li><a href="chomepage.php#candidates">Candidates</a></li>
+          <li><a href="chomepage.php#companies">Company</a></li>
+          <li><a href="chomepage.php#about">About Us</a></li>
+				  <li><a href="chomepage.php#contact">Contact Us</a></li>
           <?php if(empty($_SESSION['id_user']) && empty($_SESSION['id_company'])) { ?>
                 
            <li>

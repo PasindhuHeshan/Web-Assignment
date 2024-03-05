@@ -38,7 +38,7 @@ require_once("db.php");
         </div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
-          <li><a href="http://localhost/careerplus/jobs.php">Jobs</a></li>
+          <li><a href="jobs.php">Jobs</a></li>
           <li><a href="#candidates">Candidates</a></li>
           <li><a href="#companies">Company</a></li>
           <li><a href="#about">About Us</a></li>
@@ -87,7 +87,7 @@ require_once("db.php");
   </header>
   <section id="home">
     <section class="content-header bg-main"
-      style="background: linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('http://localhost/careerplus/img/home.jpg') no-repeat center center fixed !important; 
+      style="background: linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('img/home.jpg') no-repeat center center fixed !important; 
                  -webkit-background-size: contain;	-moz-background-size: contain;	-o-background-size: contain;	background-size: contain !important; height= 40rem ">
       <div class="container">
         <div class="row">
@@ -131,7 +131,7 @@ require_once("db.php");
                       ?>
                       <div class="card">
                         <div class="card-left">
-                          <img src="http://localhost/careerplus/img/icon2.jpg" alt="New Job">
+                          <img src="img/icon2.jpg" alt="New Job">
                         </div>
                         <div class="card-center">
                           <h4 class="attachment-heading"><a href="view-job-post.php?id=<?php echo $row['id_jobpost']; ?>">
@@ -172,7 +172,7 @@ require_once("db.php");
         <div class="card">
           <div class="row">
             <div class="candidate-img">
-              <img src="http://localhost/careerplus/img/browsejob.jpg" alt="Browse Jobs">
+              <img src="img/browsejob.jpg" alt="Browse Jobs">
               <div class="caption">
                 <h3 class="text-center">Browse Jobs</h3>
               </div>
@@ -180,7 +180,7 @@ require_once("db.php");
           </div>
           <div class="col-sm-4 col-md-4">
             <div class="candidate-img">
-              <img src="http://localhost/careerplus/img/interview.jpg" alt="Apply & Get Interviewed">
+              <img src="img/interview.jpg" alt="Apply & Get Interviewed">
               <div class="caption">
                 <h3 class="text-center">Apply & Get Interviewed</h3>
               </div>
@@ -188,7 +188,7 @@ require_once("db.php");
           </div>
           <div class="col-sm-4 col-md-4">
             <div class="candidate-img">
-              <img src="http://localhost/careerplus/img/startjob.jpg" alt="Start A Career">
+              <img src="img/startjob.jpg" alt="Start A Career">
               <div class="caption">
                 <h3 class="text-center">Start A Career</h3>
               </div>
@@ -207,7 +207,7 @@ require_once("db.php");
         <div class="card">
           <div class="row">
             <div class="candidate-img">
-              <img src="http://localhost/careerplus/img/jobposting.jpg" alt="Browse Jobs">
+              <img src="img/jobposting.jpg" alt="Browse Jobs">
               <div class="caption">
                 <h3 class="text-center">Post a Job</h3>
               </div>
@@ -215,7 +215,7 @@ require_once("db.php");
           </div>
           <div class="col-sm-4 col-md-4">
             <div class="candidate-img">
-              <img src="http://localhost/careerplus/img/manage.jpg" alt="Apply & Get Interviewed">
+              <img src="img/manage.jpg" alt="Apply & Get Interviewed">
               <div class="caption">
                 <h3 class="text-center">Manage & Track</h3>
               </div>
@@ -223,7 +223,7 @@ require_once("db.php");
           </div>
           <div class="col-sm-4 col-md-4">
             <div class="candidate-img">
-              <img src="http://localhost/careerplus/img/hire.jpg" alt="Start A Career">
+              <img src="img/hire.jpg" alt="Start A Career">
               <div class="caption">
                 <h3 class="text-center">Hire</h3>
               </div>
@@ -334,8 +334,8 @@ require_once("db.php");
         style="width: 30rem;	height: 18rem;	border-radius: 5px;	object-fit:contain;	padding: 30px; margin-top: 30px"
         src="img/career-plus-logo-v.png" alt="CareerPlus Logo">
       <img class="team"
-        style="width: 38rem;	height: 21rem;	float:left;	object-fit:contain;	padding: 10px; margin-right: 40px"
-        src="http://localhost/careerplus/img/team.jpg" alt="Our Team">
+        style="width: 32rem;	height: 19rem;	float:left;	object-fit:contain;	padding: 10px; margin-right: 40px"
+        src="img/team.jpg" alt="Our Team">
     </div>
 
     <section id="about">
